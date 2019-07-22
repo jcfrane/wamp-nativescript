@@ -16,10 +16,10 @@ this.wamp = new Wamp(environment.websocketUrl, {
       return this.store.selectSnapshot(SessionState.user).websocketToken;
     },
     onConnect: () => {
-    const channelId = this.store.selectSnapshot(SessionState.user).websocketChannelId;
-    this.wamp.subscribe('bo.topic.transaction_processed' + '.' + channelId, (payload) => {
-        payload = JSON.parse(payload[0]);
-    });
+        const channelId = this.store.selectSnapshot(SessionState.user).websocketChannelId;
+        this.wamp.subscribe('bo.topic.transaction_processed' + '.' + channelId, (payload) => {
+            payload = JSON.parse(payload[0]);
+        });
     }
 });
 ```
